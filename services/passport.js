@@ -21,7 +21,7 @@ passport.use(new googleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true
-}, (accessToken, refreshToken, profile, done)=> {
+}, (accessToken, refreshToken, profile, done) => {
     User.findOne({googleId: profile.id}).exec()
         .then((foundUser) => {
             if (foundUser){
@@ -33,5 +33,21 @@ passport.use(new googleStrategy({
                     .then(user => done(null, user));   //.save() return a promise with the object just saved to the DB
             }
         })    
+})
+);
+
+
+passport.use(new googleStrategy({
+    clientID: keys.googleClientID,
+    clientSecret: keys.googleClientSecret,
+    callbackURL: '/auth/google/callback',
+    proxy: true
+}, async (accessToken, refreshToken, profile, done) => {
+   const foundUser = await User.findOne({googleId: profile.id});
+   if (foundUser){
+        return done(null, foundUser);
+   }
+    const newUser =  await new User({googleId: profile.id, fullName : profile.displayName}).save();
+    done(null, newUser);
 })
 );
