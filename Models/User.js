@@ -3,7 +3,8 @@ const {Schema} = mongoose
 
 mongoose.model('users', new Schema({
     googleId: String,
-    fullName: String
+    fullName: String,
+    credits: {type: Number, default: 0},
 })
 );
 

@@ -11,11 +11,13 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^6.2.1",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
@@ -25,6 +27,7 @@
     "passport-google-oauth20": "^2.0.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "redux": "^4.1.1"
+    "redux": "^4.1.1",
+    "stripe": "^8.176.0"
   }
 }

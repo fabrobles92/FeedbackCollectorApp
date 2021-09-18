@@ -14,3 +14,6 @@ ReactDom.render(
   <App />
 </Provider>, 
 document.getElementById('root'));
+
+//console.log('Key is:', process.env.REACT_APP_STRIPE_KEY)
+//console.log('Key is:', process.env.NODE_ENV)
