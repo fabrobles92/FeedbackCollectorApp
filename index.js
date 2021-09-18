@@ -5,6 +5,7 @@ const keys = require('./config/keys')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
 const bodyParser = require('body-parser')
+const path = require('path')
 require('./Models/User')
 require('./services/passport')
 
