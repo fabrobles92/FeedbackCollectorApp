@@ -22,7 +22,7 @@ module.exports = (app) => {
         res.redirect('/surveys');
     });
 
-    app.get('/api/me', (req, res)=> {
+    app.get('/api/me', (req, res)=> {        
         res.send(req.user);
     })
 
